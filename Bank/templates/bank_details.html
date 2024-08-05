@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+      <h1>Bank Details :</h1>
+    <div class="bank-details">
+        <h2>{{ bank.name }}</h2>
+        <p><strong>Address:</strong> {{ bank.address }}</p>
+        <p><strong>Swift Code:</strong> {{ bank.swift_code }}</p>
+        <p><strong>Institution Number:</strong> {{ bank.institution_number }}</p>
+        <p><strong>Description:</strong> {{ bank.description }}</p>
+    </div>
+    
+    <h2>Branches :</h2>
+    <h4><p>Branch  details page :-</p></h4>
+        <ul>
+        {% for branch in branches %}
+            <li>
+                <a href="{% url 'branch_details' branch.id %}">{{ branch.name }}</a><br>
+                
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add_branch' bank.id %}">Add New Branch</a><br>
+    <a href="{% url 'edit_bank' bank.id %}">Edit Bank</a><br>
+    <a href="{% url 'delete_bank' bank.id %}">Delete Bank</a><br>
+    <a href="{% url 'list_banks' %}">Back to Bank List</a><br>
+    
+
+</body>
+</html>

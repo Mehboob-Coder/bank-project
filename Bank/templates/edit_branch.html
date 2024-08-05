@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Branch</title>
+</head>
+<body>
+    <h1>Edit Branch</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+       
+    </form>
+    
+    <a href="{% url 'branch_details' form.instance.id %}">Back to Branch Details</a>
+</body>
+</html>

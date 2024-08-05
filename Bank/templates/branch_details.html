@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Details</title>
+</head>
+<body>
+    <h1>Branch Details</h1>
+    <ul>
+        <li><strong>Transit Number:</strong> {{ branch.transit_num }}</li>
+        <li><strong>Address:</strong> {{ branch.address }}</li>
+        <li><strong>Capacity:</strong> {{ branch.capacity }}</li>
+        <li><strong>Last Modified:</strong> {{ branch.last_modified }}</li>
+    </ul>
+    <a href="{% url 'edit_branch' branch.id %}">Edit Branch</a><br>
+    <a href="{% url 'delete_branch' branch.id %}">Delete Branch</a><br>
+    <a href="{% url 'bank_details' branch.bank.id %}">Back to Bank Details</a><br>
+    
+    
+</body>
+</html>
