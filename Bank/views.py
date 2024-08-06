@@ -55,14 +55,14 @@ def branch_details(request, branch_id):
     return render(request, 'branch_details.html', context)
 @login_required
 def edit_branch(request, branch_id):
-    branch = get_object_or_404(Branch, id=branch_id)##
+    branch = get_object_or_404(Branch, id=branch_id)
     if request.user != branch.bank.owner:
         return HttpResponse(status=403)
     if request.method == 'POST':
-        form = BranchForm(request.POST, instance=branch)##
+        form = BranchForm(request.POST, instance=branch)
         if form.is_valid():
             form.save()
-            return redirect(f'/banks/branch/{branch.id}/details/')##
+            return redirect(f'/banks/branch/{branch.id}/details/')
     else:
         form = BranchForm(instance=branch)
     return render(request, 'edit_branch.html', {'form': form})
@@ -94,7 +94,7 @@ def delete_bank(request, bank_id):
     if request.method == 'POST':
         bank.delete() 
         return redirect('list_banks')  
-    return render(request, 'confirm_delete.html', {'object': bank, 'object_type': 'bank'})##
+    return render(request, 'confirm_delete.html', {'object': bank, 'object_type': 'bank'})
 
 
 @login_required
@@ -107,4 +107,3 @@ def delete_branch(request, branch_id):
         return redirect('bank_details', bank_id=branch.bank.id)  
     return render(request, 'confirm_delete.html', {'object': branch, 'object_type': 'branch'})
 
-print('hello')
