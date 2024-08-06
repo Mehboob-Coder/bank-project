@@ -21,8 +21,8 @@ def add_bank(request):
 def add_branch(request, bank_id):
     bank = get_object_or_404(Bank, id=bank_id)
 
-    if request.user != bank.owner:
-        return HttpResponse('owner does not found')
+    # if request.user != bank.owner:
+    #     return HttpResponse('owner does not found')
     
     if request.method == 'POST':
         form = BranchForm(request.POST)
