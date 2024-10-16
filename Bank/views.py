@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import  HttpResponse
 from django.contrib.auth.decorators import login_required
+
+from Management.models import Report
 from .models import Bank, Branch
 from .forms import BankForm, BranchForm
 
@@ -68,6 +70,7 @@ def edit_branch(request, branch_id):
     return render(request, 'edit_branch.html', {'form': form})
 
 
+
 @login_required
 def edit_bank(request, bank_id):
     bank = get_object_or_404(Bank, id=bank_id)
@@ -106,4 +109,8 @@ def delete_branch(request, branch_id):
         branch.delete()  
         return redirect('bank_details', bank_id=branch.bank.id)  
     return render(request, 'confirm_delete.html', {'object': branch, 'object_type': 'branch'})
+
+
+
+
 
